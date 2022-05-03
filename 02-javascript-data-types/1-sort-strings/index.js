@@ -8,13 +8,18 @@ export function sortStrings(arr, param = 'asc') {
     const direction = {
         asc: 1,
         desc: -1,
-    }
+    };
     if (!direction[param]) {
         throw new Error('wrong direction');
     }
 
-    return arr.slice().sort((a, b) => 
-        direction[param] * a.localeCompare(
-            b,['ru', 'en'],{caseFirst: 'upper'})
+    return arr
+        .slice()
+        .sort(
+            (a, b) =>
+                direction[param] *
+                a.localeCompare(b, ['ru', 'en'], {
+                    caseFirst: 'upper',
+                })
         );
 }
