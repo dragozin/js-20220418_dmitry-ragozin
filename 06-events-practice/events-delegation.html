@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<meta charset="UTF-8" />
+
+<head>
+  <style>
+    table {
+      width: 400px;
+      border: 1px solid red;
+      background: gainsboro;
+    }
+
+    tr {
+      background: white;
+    }
+
+    td {
+      width: 40px;
+      height: 40px;
+      border: 1px solid red;
+      text-align: center;
+      vertical-align: center;
+    }
+
+    .highlited {
+      background-color: cyan;
+    }
+  </style>
+</head>
+<body>
+  <button id="add" tabindex="1">Get more fruits</button>
+
+  <section>
+    <table id="fruits" cellspacing="10">
+      <tr>
+        <td>
+          <span>🍇</span>
+        </td>
+        <td>
+          <div>🍈</div>
+        </td>
+        <td>
+          <p>🍉</p>
+        </td>
+        <td>
+          <span>
+            <span>🍊</span>
+          </span>
+        </td>
+        <td>🍋</td>
+      </tr>
+    </table>
+    <script>
+      add.addEventListener('pointerdown', event => {
+        const tr = document.createElement('tr');
+
+        tr.innerHTML = `
+          <td>🍇</td>
+          <td>🍈</td>
+          <td>🍉</td>
+          <td>🍊</td>
+          <td>🍋</td>
+        `;
+
+        fruits.append(tr);
+      });
+
+      fruits.addEventListener('click', ({ target }) => {
+        const td = target.closest('td');
+        if (!td) {
+          return;
+        }
+
+        td.classList.toggle('highlited');
+      });
+    </script>
+  </section>
+</body>

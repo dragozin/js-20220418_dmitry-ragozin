@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Module #5</title>
+    <link rel="stylesheet" href="dom.css" />
+  </head>
+  <body>
+    <script></script>
+    <script></script>
+    <main>
+      <section class="data-section">
+        <h2>Button</h2>
+        <button id="btn" type="button">Click here</button>
+
+        <script></script>
+
+        <script></script>
+      </section>
+      <section class="data-section">
+        <script></script>
+
+        <h2 id="h2" data-id="forms">Forms</h2>
+        <form id="form1" name="form1">
+          <fieldset>
+            <legend>Form #1</legend>
+            <input name="foo" type="text" />
+            <input type="submit" />
+          </fieldset>
+        </form>
+
+        <script></script>
+
+        <form name="form2">
+          <fieldset>
+            <legend>Form #2</legend>
+            <select name="country">
+              <option value="belgium">Belgium</option>
+              <option value="france">France</option>
+              <option value="jamaica">Jamaica</option>
+              <option value="mexico">Mexico</option>
+            </select>
+            <input type="submit" />
+          </fieldset>
+        </form>
+
+        <form name="form3">
+          <fieldset>
+            <legend>Form #3</legend>
+            <div>
+              <textarea id="textarea" name="area" cols="30" rows="10"></textarea>
+            </div>
+            <input type="submit" />
+          </fieldset>
+        </form>
+
+        <form name="form-3"></form>
+        <form name="form-3"></form>
+      </section>
+      <section class="data-section">
+        <h2 id="links" data-id="links">Links</h2>
+
+        <div>
+          External link:
+          <a id="external-link" href="https://google.com">Google</a>
+        </div>
+        <div>Internal link: <a href="/foo">foo</a></div>
+
+        <script></script>
+      </section>
+
+      <section class="data-section">
+        <h2 data-id="images">Images</h2>
+        <div class="images">
+          <img src="http://placekitten.com/g/100/200" alt="placekitten" />
+          <img src="http://placekitten.com/g/100/200" alt="placekitten" />
+          <img src="http://placekitten.com/g/100/200" alt="placekitten" />
+        </div>
+      </section>
+
+      <section>
+        <h2>DOM events. Example #1</h2>
+
+        <div id="red">
+          <div id="orange">
+            <div id="blue">&nbsp;</div>
+          </div>
+        </div>
+
+        <script>
+          red.addEventListener('click', event => {
+            console.log('red');
+          });
+
+          orange.addEventListener('click', event => {
+            console.log('orange');
+          });
+
+          blue.addEventListener('click', event => {
+            console.log('blue');
+          });
+        </script>
+      </section>
+
+      <section>
+        <h2>DOM events. Example #2</h2>
+
+        <div id="green">
+          <div id="grey"></div>
+          <div id="yellow">&nbsp;</div>
+        </div>
+
+        <script>
+          // mouseover/out, mouseenter/leave
+          green.addEventListener('mousemove', () => {
+            console.log('mousemove');
+          });
+
+          // `mouse/pointerover` и `mouse/pointerout` - всплывают
+          green.addEventListener('mouseover', () => {
+            console.log('mouseover');
+          });
+          green.addEventListener('mouseout', () => {
+            console.log('mouseout');
+          });
+
+          green.addEventListener('mouseenter', () => {
+            console.log('mouseenter');
+          });
+          green.addEventListener('mouseleave', () => {
+            console.log('mouseleave');
+          });
+        </script>
+      </section>
+    </main>
+
+    <script></script>
+
+    <script>
+      const logEvent = event => console.log(event.type);
+      const logWithPreventEvent = event => {
+        console.log(event.type);
+        event.preventDefault();
+      };
+
+      document.addEventListener('click', event => {
+        if (event.target.nodeName !== 'A') {
+          return;
+        }
+
+        logWithPreventEvent(event);
+      });
+      document.addEventListener('submit', logWithPreventEvent);
+      document.addEventListener('keydown', logEvent);
+      document.addEventListener('change', logEvent);
+      document.getElementById('textarea').addEventListener('focus', logWithPreventEvent);
+
+      document.getElementById('links').addEventListener('mousedown', logEvent);
+      document.getElementById('links').addEventListener('mouseup', logEvent);
+      document.getElementById('links').addEventListener('click', logEvent);
+      document.getElementById('links').addEventListener('dblclick', logEvent);
+    </script>
+  </body>
+</html>
