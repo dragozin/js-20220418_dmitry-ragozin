@@ -21,8 +21,8 @@ describe('events-practice/double-slider', () => {
       formatValue: value => '$' + value,
       selected: {
         from: 120,
-        to: 150
-      }
+        to: 150,
+      },
     });
 
     document.body.append(doubleSlider.element);
@@ -33,12 +33,12 @@ describe('events-practice/double-slider', () => {
     doubleSlider = null;
   });
 
-  it("should be rendered correctly", () => {
+  it('should be rendered correctly', () => {
     expect(doubleSlider.element).toBeInTheDocument();
     expect(doubleSlider.element).toBeVisible();
   });
 
-  it("should have ability to set slider boundaries", () => {
+  it('should have ability to set slider boundaries', () => {
     doubleSlider = new DoubleSlider({
       min: 400,
       max: 600,
@@ -48,8 +48,8 @@ describe('events-practice/double-slider', () => {
     const leftBoundary = doubleSlider.element.querySelector('span[data-element="from"]');
     const rightBoundary = doubleSlider.element.querySelector('span[data-element="to"]');
 
-    expect(leftBoundary).toHaveTextContent("$400");
-    expect(rightBoundary).toHaveTextContent("$600");
+    expect(leftBoundary).toHaveTextContent('$400');
+    expect(rightBoundary).toHaveTextContent('$600');
   });
 
   it('should have ability to set selected range', () => {
@@ -58,7 +58,7 @@ describe('events-practice/double-slider', () => {
       max: 800,
       selected: {
         from: 400,
-        to: 600
+        to: 600,
       },
       formatValue: value => '$' + value,
     });
@@ -66,8 +66,8 @@ describe('events-practice/double-slider', () => {
     const leftBoundary = doubleSlider.element.querySelector('span[data-element="from"]');
     const rightBoundary = doubleSlider.element.querySelector('span[data-element="to"]');
 
-    expect(leftBoundary).toHaveTextContent("$400");
-    expect(rightBoundary).toHaveTextContent("$600");
+    expect(leftBoundary).toHaveTextContent('$400');
+    expect(rightBoundary).toHaveTextContent('$600');
   });
 
   it('should have ability to move left slider to start boundary', () => {
@@ -75,12 +75,12 @@ describe('events-practice/double-slider', () => {
     const leftBoundary = doubleSlider.element.querySelector('span[data-element="from"]');
 
     const down = new MouseEvent('pointerdown', {
-      bubbles: true
+      bubbles: true,
     });
 
     const move = new MouseEvent('pointermove', {
       clientX: 0,
-      bubbles: true
+      bubbles: true,
     });
 
     leftSlider.dispatchEvent(down);
@@ -94,12 +94,12 @@ describe('events-practice/double-slider', () => {
     const rightBoundary = doubleSlider.element.querySelector('span[data-element="to"]');
 
     const down = new MouseEvent('pointerdown', {
-      bubbles: true
+      bubbles: true,
     });
 
     const move = new MouseEvent('pointermove', {
       clientX: 1000,
-      bubbles: true
+      bubbles: true,
     });
 
     rightSlider.dispatchEvent(down);
@@ -115,17 +115,17 @@ describe('events-practice/double-slider', () => {
     const rightBoundary = doubleSlider.element.querySelector('span[data-element="to"]');
 
     const down = new MouseEvent('pointerdown', {
-      bubbles: true
+      bubbles: true,
     });
 
     const moveRight = new MouseEvent('pointermove', {
       clientX: 1000,
-      bubbles: true
+      bubbles: true,
     });
 
     const moveLeft = new MouseEvent('pointermove', {
       clientX: 0,
-      bubbles: true
+      bubbles: true,
     });
 
     leftSlider.dispatchEvent(down);
@@ -144,12 +144,12 @@ describe('events-practice/double-slider', () => {
     const rightBoundary = doubleSlider.element.querySelector('span[data-element="to"]');
 
     const down = new MouseEvent('pointerdown', {
-      bubbles: true
+      bubbles: true,
     });
 
     const move = new MouseEvent('pointermove', {
       clientX: 500,
-      bubbles: true
+      bubbles: true,
     });
 
     leftSlider.dispatchEvent(down);
@@ -162,7 +162,7 @@ describe('events-practice/double-slider', () => {
     doubleSlider = new DoubleSlider({
       min: 100,
       max: 200,
-      formatValue: value => 'USD' + value
+      formatValue: value => 'USD' + value,
     });
 
     const leftBoundary = doubleSlider.element.querySelector('span[data-element="from"]');
@@ -177,16 +177,16 @@ describe('events-practice/double-slider', () => {
     const leftSlider = doubleSlider.element.querySelector('.range-slider__thumb-left');
 
     const down = new MouseEvent('pointerdown', {
-      bubbles: true
+      bubbles: true,
     });
 
     const move = new MouseEvent('pointermove', {
       clientX: 1000,
-      bubbles: true
+      bubbles: true,
     });
 
     const up = new MouseEvent('pointerup', {
-      bubbles: true
+      bubbles: true,
     });
 
     leftSlider.dispatchEvent(down);
@@ -195,7 +195,7 @@ describe('events-practice/double-slider', () => {
 
     const [rangeSelectEvent] = spyDispatchEvent.mock.calls;
 
-    expect(rangeSelectEvent[0].type).toEqual("range-select");
+    expect(rangeSelectEvent[0].type).toEqual('range-select');
   });
 
   it('should have a new ranges in produced event', () => {
@@ -203,16 +203,16 @@ describe('events-practice/double-slider', () => {
     const leftSlider = doubleSlider.element.querySelector('.range-slider__thumb-left');
 
     const down = new MouseEvent('pointerdown', {
-      bubbles: true
+      bubbles: true,
     });
 
     const move = new MouseEvent('pointermove', {
       clientX: 300,
-      bubbles: true
+      bubbles: true,
     });
 
     const up = new MouseEvent('pointerup', {
-      bubbles: true
+      bubbles: true,
     });
 
     leftSlider.dispatchEvent(down);
