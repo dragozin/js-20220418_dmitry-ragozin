@@ -109,8 +109,8 @@ export default class DoubleSlider {
   initEventListeners() {
     const { thumbLeft, thumbRight } = this.subElements;
 
-    thumbLeft.addEventListener('pointerdown', event => this.onThumbPointerDown(event));
-    thumbRight.addEventListener('pointerdown', event => this.onThumbPointerDown(event));
+    thumbLeft.addEventListener('pointerdown', this.onThumbPointerDown);
+    thumbRight.addEventListener('pointerdown', this.onThumbPointerDown);
   }
 
   getSubElements(element) {
@@ -131,7 +131,13 @@ export default class DoubleSlider {
   }
 
   destroy() {
+    const { thumbLeft, thumbRight } = this.subElements;
+
+    thumbLeft.removeEventListener('pointerdown', this.onThumbPointerDown);
+    thumbRight.removeEventListener('pointerdown', this.onThumbPointerDown);
+
     this.remove();
+
     document.removeEventListener('pointermove', this.onThumbPointerMove);
     document.removeEventListener('pointerup', this.onThumbPointerUp);
   }
@@ -148,7 +154,7 @@ export default class DoubleSlider {
     this.subElements.thumbRight.style.right = right;
   }
 
-  onThumbPointerDown(event) {
+  onThumbPointerDown = event => {
     const thumbElem = event.target;
 
     event.preventDefault();
@@ -167,7 +173,7 @@ export default class DoubleSlider {
 
     document.addEventListener('pointermove', this.onThumbPointerMove);
     document.addEventListener('pointerup', this.onThumbPointerUp);
-  }
+  };
 
   getValue() {
     const rangeTotal = this.max - this.min;
